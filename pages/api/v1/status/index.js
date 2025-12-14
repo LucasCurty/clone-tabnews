@@ -1,5 +1,9 @@
-export default function teste(request, response) {
-  response.status(200).json({
-    chave: "Hello world!!!",
-  });
+import database from "../../../../infra/database.js";
+
+async function teste(request, response) {
+  const result = await database.query("SELECT 1 + 1 as sum");
+  console.log(result.rows);
+  response.status(200).json({ chave: "Hello world!!!" });
 }
+
+export default teste;
